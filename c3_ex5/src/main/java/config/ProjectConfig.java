@@ -1,6 +1,6 @@
 package config;
 
-import beans.Parrot;
+import beans.Fighter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,16 +10,16 @@ import org.springframework.context.annotation.Configuration;
 public class ProjectConfig {
 
   @Bean
-  public Parrot parrot1() {
-    Parrot p = new Parrot();
-    p.setName("Koko");
+  public Fighter fighter1() {
+    Fighter p = new Fighter();
+    p.setName("Superlek");
     return p;
   }
 
   @Bean
-  public Parrot parrot2() {
-    Parrot p = new Parrot();
-    p.setName("Miki");
+  public Fighter fighter2() {
+    Fighter p = new Fighter();
+    p.setName("Rodtang");
     return p;
   }
 }

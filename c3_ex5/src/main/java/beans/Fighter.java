@@ -1,6 +1,6 @@
 package beans;
 
-public class Parrot {
+public class Fighter {
 
   private String name;
 
@@ -14,6 +14,6 @@ public class Parrot {
 
   @Override
   public String toString() {
-    return "Parrot : " + name;
+    return "Fighter : " + name;
   }
 }

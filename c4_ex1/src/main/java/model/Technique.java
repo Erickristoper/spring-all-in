@@ -8,7 +8,17 @@ public class Technique {
     private String tags;
     private String videoUrl;
     private String imageUrl;
-    
+
+    public Technique(Long id, String name, String description, String category, String tags, String videoUrl,
+            String imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.tags = tags;
+        this.videoUrl = videoUrl;
+        this.imageUrl = imageUrl;
+    }
     public Long getId() {
         return id;
     }

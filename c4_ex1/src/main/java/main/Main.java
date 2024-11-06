@@ -1,5 +1,8 @@
 package main;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import config.ProjectConfiguration;
 import model.Technique;
 import proxies.EmailTechniqueNotificationProxy;
 import repositories.DBTechniqueRepository;
@@ -8,10 +11,10 @@ import services.TechniqueService;
 public class Main {
 
   public static void main(String[] args) {
-    var techniqueRepository = new DBTechniqueRepository();
-    var techniqueNotificationProxy = new EmailTechniqueNotificationProxy();
 
-    var techniqueService = new TechniqueService(techniqueRepository, techniqueNotificationProxy);
+    var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
+
+  
     var technique1 = new Technique(
         1L,
         "Jab",
@@ -20,6 +23,8 @@ public class Main {
         "boxing,punching",
         "(link unavailable)",
         "(link unavailable)");
+
+    var techniqueService = context.getBean(TechniqueService.class);
     techniqueService.publishTechnique(technique1);
 
     var technique2 = new Technique(

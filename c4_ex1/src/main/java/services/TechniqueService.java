@@ -1,9 +1,12 @@
 package services;
 
+import org.springframework.stereotype.Component;
+
 import model.Technique;
 import proxies.TechniqueNotificationProxy;
 import repositories.TechniqueRepository;
 
+@Component
 public class TechniqueService {
 
     private final TechniqueRepository techniqueRepository;

@@ -1,7 +1,10 @@
 package proxies;
 
+import org.springframework.stereotype.Component;
+
 import model.Technique;
 
+@Component
 public class EmailTechniqueNotificationProxy implements TechniqueNotificationProxy {
 
     @Override

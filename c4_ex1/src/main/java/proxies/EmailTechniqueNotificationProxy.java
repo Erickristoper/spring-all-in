@@ -1,10 +1,12 @@
 package proxies;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import model.Technique;
 
 @Component
+@Qualifier("EMAIL")
 public class EmailTechniqueNotificationProxy implements TechniqueNotificationProxy {
 
     @Override

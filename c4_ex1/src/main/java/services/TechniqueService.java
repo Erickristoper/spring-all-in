@@ -1,5 +1,6 @@
 package services;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import model.Technique;
@@ -12,7 +13,7 @@ public class TechniqueService {
     private final TechniqueRepository techniqueRepository;
     private final TechniqueNotificationProxy techniqueNotificationProxy;
 
-    public TechniqueService(TechniqueRepository techniqueRepository, TechniqueNotificationProxy techniqueNotificationProxy) {
+    public TechniqueService(TechniqueRepository techniqueRepository, @Qualifier("PUSH") TechniqueNotificationProxy techniqueNotificationProxy) {
         this.techniqueRepository = techniqueRepository;
         this.techniqueNotificationProxy = techniqueNotificationProxy;
     }

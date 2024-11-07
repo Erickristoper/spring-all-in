@@ -1,12 +1,12 @@
 package proxies;
 
-import org.springframework.context.annotation.Primary;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import model.Technique;
 
 @Component
-@Primary
+@Qualifier("PUSH")
 public class PushNotificationTechniqueProxy implements TechniqueNotificationProxy{
 
     @Override

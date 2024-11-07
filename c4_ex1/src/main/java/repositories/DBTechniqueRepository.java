@@ -1,10 +1,10 @@
 package repositories;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import model.Technique;
 
-@Component
+@Repository
 public class DBTechniqueRepository implements TechniqueRepository {
 
     @Override

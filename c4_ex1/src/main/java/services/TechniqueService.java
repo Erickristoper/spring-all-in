@@ -1,13 +1,13 @@
 package services;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import model.Technique;
 import proxies.TechniqueNotificationProxy;
 import repositories.TechniqueRepository;
 
-@Component
+@Service
 public class TechniqueService {
 
     private final TechniqueRepository techniqueRepository;

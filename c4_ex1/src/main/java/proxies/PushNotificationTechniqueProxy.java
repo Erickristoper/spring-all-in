@@ -1,11 +1,11 @@
 package proxies;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import model.Technique;
 
-@Component
+@Service
 @Qualifier("PUSH")
 public class PushNotificationTechniqueProxy implements TechniqueNotificationProxy{
 

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import config.ProjectConfiguration;
 import model.Technique;
+import services.CategoryService;
 import services.TechniqueService;
 
 public class Main {
@@ -12,11 +13,11 @@ public class Main {
   public static void main(String[] args) {
 
     try (var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class)) {
-        var techniqueService1 = context.getBean(TechniqueService.class);
-        var techniqueService2 = context.getBean("techniqueService",TechniqueService.class);
+        var techniqueService = context.getBean(TechniqueService.class);
+        var categoryService = context.getBean(CategoryService.class);
         
-        System.out.println("are equal? " + (techniqueService1 == techniqueService2));
-        
+        System.out.println("are equal? " + (techniqueService.getTechniqueRepository() == categoryService.getTechniqueRepository()));
+
     } catch (BeansException e) {
         e.printStackTrace();
     }

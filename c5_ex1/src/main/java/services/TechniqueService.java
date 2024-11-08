@@ -1,5 +1,6 @@
 package services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import repositories.TechniqueRepository;
 @Service
 public class TechniqueService {
 
+    @Autowired
     private final TechniqueRepository techniqueRepository;
     private final TechniqueNotificationProxy techniqueNotificationProxy;
 
@@ -21,5 +23,9 @@ public class TechniqueService {
     public void publishTechnique(Technique t) {
         techniqueRepository.storeTechnique(t);
         techniqueNotificationProxy.sendTechnique(t);
+    }
+
+    public TechniqueRepository getTechniqueRepository() {
+        return techniqueRepository;
     }
 }

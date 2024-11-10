@@ -6,15 +6,25 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import config.ProjectConfiguration;
 import model.Technique;
 import services.CategoryService;
+import services.TechniqueService;
 
 public class Main {
 
   public static void main(String[] args) {
 
     try (var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class)) {
-        System.out.println("Before retrieving the bean");
-        context.getBean(CategoryService.class);
-        System.out.println("After retrieving the bean");
+        
+        // test prototpye class
+        var cat1 = context.getBean(CategoryService.class);
+        var cat2 = context.getBean(CategoryService.class);
+        
+        System.out.println(cat1 == cat2);
+
+        // DBRepository is declared as Bean in the configuration class..
+        // 1. Test when TechniqueRepo is not prototype scope
+
+        var tech1 = context.getBean(TechniqueService.class);
+        System.out.println( cat1.getTechniqueRepository() == tech1.getTechniqueRepository());
 
     } catch (BeansException e) {
         e.printStackTrace();

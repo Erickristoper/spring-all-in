@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import model.Technique;
 
-@Repository
 public class DBTechniqueRepository implements TechniqueRepository {
 
     @Override

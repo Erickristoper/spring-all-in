@@ -1,16 +1,20 @@
 package services;
 
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import repositories.TechniqueRepository;
 
-@Service
-@Lazy
 public class CategoryService {
 
+    @Autowired
+    TechniqueRepository techniqueRepository;
 
     public CategoryService(TechniqueRepository techniqueRepository) {
-        System.out.println("CategoryService instance is created!");
+       this.techniqueRepository = techniqueRepository;
+    }
+
+    public TechniqueRepository getTechniqueRepository() {
+        return techniqueRepository;
     }
 }

@@ -11,6 +11,7 @@ import repositories.TechniqueRepository;
 @Service
 public class TechniqueService {
 
+    @Autowired
     private final TechniqueRepository techniqueRepository;
     private final TechniqueNotificationProxy techniqueNotificationProxy;
 

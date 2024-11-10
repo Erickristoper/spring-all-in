@@ -2,6 +2,7 @@ package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import model.Technique;
@@ -27,5 +28,19 @@ public class TechniqueService {
 
     public TechniqueRepository getTechniqueRepository() {
         return techniqueRepository;
+    }
+
+    @Autowired
+    private ApplicationContext context;
+
+    public TechniqueRepository sendToProcessor(Technique t) {
+        var tp = context.getBean(TechniqueProcessor.class);
+        tp.setTechnique(t);
+        tp.processTechnique();
+        tp.validateTechnique();
+
+        t = tp.getTechnique();
+
+        return tp.getTechniqueRepository();
     }
 }

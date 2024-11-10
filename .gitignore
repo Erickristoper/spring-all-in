@@ -1,1 +1,16 @@
 .DS_Store
+c5_ex1/.vscode/settings.json
+c5_ex1/target/classes/config/ProjectConfiguration.class
+c5_ex1/target/classes/main/Main.class
+c5_ex1/target/classes/model/Category.class
+c5_ex1/target/classes/model/Image.class
+c5_ex1/target/classes/model/Tag.class
+c5_ex1/target/classes/model/Technique.class
+c5_ex1/target/classes/model/Video.class
+c5_ex1/target/classes/proxies/EmailTechniqueNotificationProxy.class
+c5_ex1/target/classes/proxies/PushNotificationTechniqueProxy.class
+c5_ex1/target/classes/proxies/TechniqueNotificationProxy.class
+c5_ex1/target/classes/repositories/DBTechniqueRepository.class
+c5_ex1/target/classes/repositories/TechniqueRepository.class
+c5_ex1/target/classes/services/TechniqueService.class
+

@@ -1,10 +1,10 @@
 package main;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ProjectConfiguration;
+import model.Category;
 import model.Technique;
 import services.CategoryService;
 import services.TechniqueService;
@@ -13,32 +13,31 @@ public class Main {
 
   public static void main(String[] args) {
 
-    var technique1 = new Technique(
-        1L,
-        "Jab",
-        "A quick straight punch.",
-        "Striking",
-        "boxing,punching",
-        "(link unavailable)",
-        "(link unavailable)");
+    Category strikingCategory = new Category(
+            1L, 
+            "Striking", 
+            "Techniques involving punches, kicks, and other strikes."
+        );
+
+
     
     try ( var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class)) {
         
-        var tech1 = context.getBean(TechniqueService.class);
-        var tech2 = context.getBean(TechniqueService.class);
-        var tech3 = context.getBean(TechniqueService.class);
-        System.out.println(tech1 == tech2);
+        var categoryService = context.getBean(CategoryService.class);
 
-        System.out.println( tech1.getTechniqueRepository() == tech2.getTechniqueRepository());
-
-        System.out.println( tech1.getTechniqueRepository() == tech2.sendToProcessor(technique1));
-
-        System.out.println( tech3.sendToProcessor(technique1) == tech2.sendToProcessor(technique1));
+        categoryService.displayCategory(strikingCategory);
 
 
-    } catch (BeansException e) {
-        e.printStackTrace();
-    }
+    } catch (BeansException e) {}
+
+        var technique1 = new Technique(
+            1L,
+            "Jab",
+            "A quick straight punch.",
+            "Striking",
+            "boxing,punching",
+            "(link unavailable)",
+            "(link unavailable)");
 
 
     var technique2 = new Technique(

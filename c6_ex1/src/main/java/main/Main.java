@@ -7,7 +7,6 @@ import config.ProjectConfiguration;
 import model.Category;
 import model.Technique;
 import services.CategoryService;
-import services.TechniqueService;
 
 public class Main {
 

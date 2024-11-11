@@ -4,6 +4,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Scope;
 
 import repositories.DBTechniqueRepository;
@@ -13,6 +14,7 @@ import services.CategoryService;
 
 @Configuration
 @ComponentScan(basePackages = {"services", "proxies"})
+@EnableAspectJAutoProxy
 public class ProjectConfiguration {
 
     @Bean

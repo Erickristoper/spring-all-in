@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
+import model.Category;
+
 @Component
 @Aspect
 public class LoggingAspect {
@@ -16,14 +18,20 @@ public class LoggingAspect {
 
 
     @Around("execution(* services.*.*(..))")
-    public void log(ProceedingJoinPoint joinPoint) {
+    public Object log(ProceedingJoinPoint joinPoint) throws Throwable{
         String methodName = joinPoint.getSignature().getName();
         Object[] arg = joinPoint.getArgs();
         logger.info("method " + methodName + " with params " + Arrays.asList(arg) + " will execute. ");
 
-        try {
-            Object returnValue = joinPoint.proceed();
-            logger.info("Method executed and retured " + returnValue);
-        } catch (Throwable e) {}
+        Category grapplingCategory = new Category(
+            2L, 
+            "Grappling", 
+            "Techniques involving wrestling, submission holds, and joint locks."
+        );
+        Object returnValue = joinPoint.proceed(new Object[] {grapplingCategory});
+        logger.info("Method executed and returned " + returnValue);
+
+
+        return "FAILED";
     }
 }

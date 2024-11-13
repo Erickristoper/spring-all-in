@@ -24,8 +24,9 @@ public class Main {
         
         var categoryService = context.getBean(CategoryService.class);
 
-        categoryService.displayCategory(strikingCategory);
+        var returnVal = categoryService.displayCategory(strikingCategory);
 
+        System.out.println(returnVal);
 
     } catch (BeansException e) {}
 

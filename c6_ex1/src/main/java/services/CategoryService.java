@@ -15,8 +15,9 @@ public class CategoryService {
        this.techniqueRepository = techniqueRepository;
     }
 
-    public void displayCategory(Category category) {
+    public String displayCategory(Category category) {
         System.out.println("Displaying Category: " + category.getName());
+        return "SUCCESS";
     }
 
     public TechniqueRepository getTechniqueRepository() {

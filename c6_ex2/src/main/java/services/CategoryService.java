@@ -23,11 +23,21 @@ public class CategoryService {
         return "SUCCESS";
     }
 
-    @ToLog
+    
     public void deleteCategory(Category category) {
         System.out.println("Deleting category " + category.getName());
     }
 
+    public String updateCategory(Category c) {
+        System.out.println("Updating category " + c.getName());
+        return "UPDATE SUCCESSFUL!";
+    }
+
+    @ToLog
+    public String modifyCategory(Category c) {
+        System.out.println("Modifying category " + c.getName());
+        throw new NumberFormatException();
+    }
     public TechniqueRepository getTechniqueRepository() {
         return techniqueRepository;
     }

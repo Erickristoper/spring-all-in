@@ -20,10 +20,10 @@ public class Main {
     
     try ( var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class)) {
         var categoryService = context.getBean(CategoryService.class);
-        categoryService.deleteCategory(strikingCategory);
-
-    } catch (BeansException e) {
-        e.printStackTrace();
+        var x = categoryService.modifyCategory(strikingCategory);
+        System.out.println(x);
+    } catch (Throwable e) {
+        // e.printStackTrace(); 
     }
 
         var technique1 = new Technique(

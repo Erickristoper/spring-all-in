@@ -1,6 +1,5 @@
 package main;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ProjectConfiguration;
@@ -20,7 +19,7 @@ public class Main {
     
     try ( var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class)) {
         var categoryService = context.getBean(CategoryService.class);
-        var x = categoryService.modifyCategory(strikingCategory);
+        var x = categoryService.displayCategory(strikingCategory);
         System.out.println(x);
     } catch (Throwable e) {
         // e.printStackTrace(); 

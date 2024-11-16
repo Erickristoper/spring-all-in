@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Scope;
 
+import aspects.LoggingAspect;
+import aspects.SecurityAspect;
 import repositories.DBTechniqueRepository;
 import repositories.TechniqueRepository;
-import services.CategoryService;
 
 
 @Configuration
@@ -21,5 +22,15 @@ public class ProjectConfiguration {
     @Scope(BeanDefinition.SCOPE_PROTOTYPE)
     TechniqueRepository techniqueRepository() {
         return new DBTechniqueRepository();
+    }
+
+    @Bean
+    LoggingAspect loggingAspect() {
+        return new LoggingAspect();
+    }
+
+    @Bean
+    SecurityAspect securityAspect() {
+        return new SecurityAspect();
     }
 }

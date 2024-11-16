@@ -1,37 +1,28 @@
 package aspects;
 
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
+import org.springframework.core.annotation.Order;
 
-import model.Category;
 import services.CategoryService;
 
 
 @Aspect
-@Component
+@Order(2)
 public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(CategoryService.class.getName());
 
+    @Around(value = "@annotation(ToLog)")
+    public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
 
-    @AfterReturning(value = "@annotation(ToLog)", returning= "returnedValue")
-    public void updateLog(Object returnedValue) throws Throwable{
-        logger.info("START UPDATING");
-        logger.info("This is called after the executiion " + returnedValue);
-        logger.info("END UPDATE");
-    }
+        logger.info("Logging Aspect: Calling the intercepted method");
+        Object returnedValue = joinPoint.proceed();
+        logger.info("Logging Aspect: Method executed and returned " + returnedValue);
 
-    @AfterThrowing(value= "@annotation(ToLog)", throwing = "throwedValue")
-    public String modifyErrLog(Object throwedValue) throws Throwable {
-        logger.info("Thid is called after failed modification " + throwedValue);
-        logger.severe("MODFICATION ERROR");
-        return "YESSSS";
+        return returnedValue;
     }
 }

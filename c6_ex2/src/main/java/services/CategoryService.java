@@ -18,6 +18,7 @@ public class CategoryService {
        this.techniqueRepository = techniqueRepository;
     }
 
+    @ToLog
     public String displayCategory(Category category) {
         System.out.println("Displaying Category: " + category.getName());
         return "SUCCESS";
@@ -33,11 +34,11 @@ public class CategoryService {
         return "UPDATE SUCCESSFUL!";
     }
 
-    @ToLog
     public String modifyCategory(Category c) {
         System.out.println("Modifying category " + c.getName());
         throw new NumberFormatException();
     }
+
     public TechniqueRepository getTechniqueRepository() {
         return techniqueRepository;
     }

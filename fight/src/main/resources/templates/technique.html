@@ -13,13 +13,19 @@
   <table>
     <tr>
         <th>Name</th>
-        <th>Category</th>
+        <th>Description</th>
     </tr>
     <tr th:each=" t: ${techniques}  " >
         <td th:text= " ${t.name}  "   ></td>
-        <td th:text= " ${t.category}  "   ></td>
+        <td th:text= " ${t.description}  "   ></td>
     </tr>
   </table>
-    
+
+  <h2>Add a technique</h2>
+    <form action="/techniques" method="POST">
+        Name: <input type="text" name="name" />
+        Description: <input type="text" name="description">
+        <button type="submit">Add Technique</button>
+    </form>
 </body>
 </html>

@@ -11,11 +11,15 @@ public class LoginProcessor {
     @Autowired
     LoggedIUserManagementService ms;
 
+    @Autowired
+    OnlineUserCountService cs;
+
 
     public boolean login(String username, String password) {
 
-        if("ERIC".equals(username) && "password".equals(password)){
+        if("ERIC".equals(username)  || "june".equals(username) && "password".equals(password)){
             ms.setUsername(username);
+            cs.increment();
             return true;
         } else {
             return false ;

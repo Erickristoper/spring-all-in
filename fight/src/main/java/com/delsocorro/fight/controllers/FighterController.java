@@ -1,12 +1,10 @@
 package com.delsocorro.fight.controllers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.delsocorro.fight.model.CombatFighter;
@@ -16,8 +14,13 @@ import com.delsocorro.fight.model.CombatFighter;
 public class FighterController {
 
     @GetMapping("/Ali")
-    public CombatFighter getAli() {
-         return new CombatFighter(
+    public ResponseEntity<CombatFighter> getAli() {
+         return ResponseEntity
+                    .status(HttpStatus.ACCEPTED)
+                    .header("sport", "boxing")
+                    .header("division", "heavewieght")
+                    .header("hall_of_fame", "yes")
+                    .body(new CombatFighter(
                                 1L,
                                 "Muhammad Ali",
                                 "The Greatest",
@@ -27,12 +30,12 @@ public class FighterController {
                                 5,
                                 0,
                                 "Legendary boxer and social activist."
-                                );
+                                ));
     }
 
     @GetMapping("/fighters")
     public List<CombatFighter> getFighters() {
-        return Arrays.asList(
+        return List.of(
                     new CombatFighter(
                                 1L,
                                 "Muhammad Ali",

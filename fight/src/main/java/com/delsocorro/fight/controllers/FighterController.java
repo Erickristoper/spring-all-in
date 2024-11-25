@@ -1,8 +1,11 @@
 package com.delsocorro.fight.controllers;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +26,19 @@ public class FighterController {
 
     private final FighterService fs;
 
+    private static Logger logger = Logger.getLogger(FighterController.class.getName());
+
     public FighterController(FighterService fs) {
         this.fs = fs;
+    }
+
+
+    @PostMapping("/withRequestBody")
+    public ResponseEntity<CombatFighter> getFighter( @RequestBody CombatFighter cf) {
+        
+        logger.info("Received request for " +  cf.getName());
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(cf);
     }
 
     @PostMapping("/checkDrawFightWithControllerAdvice")

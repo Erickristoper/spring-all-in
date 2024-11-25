@@ -13,6 +13,8 @@ import com.delsocorro.fight.model.CombatFighter;
 import com.delsocorro.fight.services.FighterService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -24,6 +26,15 @@ public class FighterController {
     public FighterController(FighterService fs) {
         this.fs = fs;
     }
+
+    @PostMapping("/checkDrawFightWithControllerAdvice")
+    public ResponseEntity<?> chechDrawFigntWithAdvice() {
+        CombatFighter c = fs.checkFights();
+        return ResponseEntity
+            .status(HttpStatus.ACCEPTED)
+            .body(c);
+    }
+    
 
     @PostMapping("/checkDrawFight")
     public ResponseEntity<?> chechDrawFignt(){

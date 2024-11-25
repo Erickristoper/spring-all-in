@@ -7,11 +7,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.delsocorro.fight.exceptions.ErrorDetails;
+import com.delsocorro.fight.exceptions.NoFightDrawException;
 import com.delsocorro.fight.model.CombatFighter;
+import com.delsocorro.fight.services.FighterService;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @RestController
 public class FighterController {
+
+    private final FighterService fs;
+
+    public FighterController(FighterService fs) {
+        this.fs = fs;
+    }
+
+    @PostMapping("/checkDrawFight")
+    public ResponseEntity<?> chechDrawFignt(){
+       try {
+        CombatFighter c = fs.checkFights();
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+        .body(c);
+       } catch (NoFightDrawException e) {
+        ErrorDetails ed = new ErrorDetails();
+        ed.setMessage("No draw figths cannot proceed");
+        return ResponseEntity.badRequest().body(ed);
+       }
+    }
+    
 
     @GetMapping("/Ali")
     public ResponseEntity<CombatFighter> getAli() {
@@ -58,6 +84,7 @@ public class FighterController {
                                 0,
                                 "Started as a boxer and moved to MMA"));
     }
+
     
     
 }

@@ -1,7 +1,7 @@
 package com.delsocorro.fight.model;
 
 public class Technique {
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private String category;
@@ -9,7 +9,7 @@ public class Technique {
     private String videoUrl;
     private String imageUrl;
 
-    public Technique(Long id, String name, String description, String category, String tags, String videoUrl,
+    public Technique(String id, String name, String description, String category, String tags, String videoUrl,
             String imageUrl) {
         this.id = id;
         this.name = name;
@@ -19,10 +19,10 @@ public class Technique {
         this.videoUrl = videoUrl;
         this.imageUrl = imageUrl;
     }
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {

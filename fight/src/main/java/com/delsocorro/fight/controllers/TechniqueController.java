@@ -20,7 +20,7 @@ public class TechniqueController {
         this.ts = ts;
 
         Technique technique1 = new Technique(
-            1L,
+            "1L",
             "Jab",
             "A quick straight punch.",
             "Striking",
@@ -42,7 +42,7 @@ public class TechniqueController {
     public String addTechnique(@RequestParam String name, @RequestParam String description,Model model) {
         
         var technique2 = new Technique(
-            2L,
+            "2L",
             name , // "Cross",
             description, // "A powerful straight punch.",
             "Striking",
@@ -53,7 +53,7 @@ public class TechniqueController {
         ts.addTechnique(technique2);
     
         Technique technique3 = new Technique(
-            3L,
+            "3L",
             "Hook",
             "A curved punch targeting the head or body.",
             "Striking",
@@ -62,7 +62,7 @@ public class TechniqueController {
             "(link unavailable)");
     
         Technique technique4 = new Technique(
-            4L,
+            "4L",
             "Uppercut",
             "A punch targeting the opponent's chin or body.",
             "Striking",

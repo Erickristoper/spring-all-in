@@ -1,6 +1,7 @@
 package com.delsocorro.fight.controllers;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.apache.catalina.connector.Response;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.delsocorro.fight.exceptions.ErrorDetails;
 import com.delsocorro.fight.exceptions.NoFightDrawException;
 import com.delsocorro.fight.model.CombatFighter;
+import com.delsocorro.fight.model.Technique;
 import com.delsocorro.fight.services.FighterService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
+import org.springframework.web.bind.annotation.RequestHeader;
 
 
 @RestController
@@ -27,6 +28,18 @@ public class FighterController {
     private final FighterService fs;
 
     private static Logger logger = Logger.getLogger(FighterController.class.getName());
+
+
+    @PostMapping("/attack")
+    public ResponseEntity<Technique> attack(
+        @RequestHeader String requestId,
+        @RequestBody Technique t
+    ) {
+        logger.info("Received an attack of ->  " + t.getName() + " with request id of " + requestId);
+        t.setId(UUID.randomUUID().toString());
+
+        return ResponseEntity.status(HttpStatus.OK).header("requestId", requestId).body(t);
+    }
 
     public FighterController(FighterService fs) {
         this.fs = fs;

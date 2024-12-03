@@ -6,24 +6,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ericds.Muay.clients.TechniqueAPIProxy;
+import dev.ericds.Muay.clients.AttackProxy;
 import dev.ericds.Muay.model.Technique;
 
 
 @RestController
-public class TechniqueAPI {
+public class TechniqueController {
 
-    private final TechniqueAPIProxy prox;
+    // private final TechniqueAPIProxy prox;
 
-    public TechniqueAPI(TechniqueAPIProxy prox) {
-        this.prox = prox;
+    private final AttackProxy attackProxy;
+
+    public TechniqueController(AttackProxy attackProxy) {
+        this.attackProxy = attackProxy;
     }
 
     @PostMapping("/technique")
     public Technique technique(@RequestBody Technique t) {
-        System.out.println("t.getNAme  --> " + t.getName() + "  " + t.getDescription());
 
         String requestId = UUID.randomUUID().toString();
-        return prox.createTechnique(requestId, t);
+        return attackProxy.createTechnique(requestId, t);
     }
 }

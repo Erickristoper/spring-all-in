@@ -36,7 +36,7 @@ public class FighterController {
         @RequestBody Technique t
     ) {
         logger.info("Received an attack of ->  " + t.getName() + " with request id of " + requestId);
-        t.setId(UUID.randomUUID().toString());
+        // t.setId(UUID.randomUUID().toString());
 
         return ResponseEntity.status(HttpStatus.OK).header("requestId", requestId).body(t);
     }

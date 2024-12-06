@@ -1,26 +1,29 @@
 package com.delsocorro.fight.controllers;
 
-import java.net.Authenticator.RequestorType;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.delsocorro.fight.model.Technique;
+import com.delsocorro.fight.repository.TechniqueRepository;
 import com.delsocorro.fight.services.TechniqueService;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
 public class TechniqueController {
 
     private final TechniqueService ts;
+    private final TechniqueRepository tr;
 
-    public TechniqueController(TechniqueService ts) {
+    public TechniqueController(TechniqueService ts, TechniqueRepository tr) {
         this.ts = ts;
+        this.tr = tr;
 
         Technique technique1 = new Technique(
-            "1L",
+            1L,
             "Jab",
             "A quick straight punch.",
             "Striking",
@@ -42,7 +45,7 @@ public class TechniqueController {
     public String addTechnique(@RequestParam String name, @RequestParam String description,Model model) {
         
         var technique2 = new Technique(
-            "2L",
+            2L,
             name , // "Cross",
             description, // "A powerful straight punch.",
             "Striking",
@@ -53,7 +56,7 @@ public class TechniqueController {
         ts.addTechnique(technique2);
     
         Technique technique3 = new Technique(
-            "3L",
+            3L,
             "Hook",
             "A curved punch targeting the head or body.",
             "Striking",
@@ -62,7 +65,7 @@ public class TechniqueController {
             "(link unavailable)");
     
         Technique technique4 = new Technique(
-            "4L",
+            4L,
             "Uppercut",
             "A punch targeting the opponent's chin or body.",
             "Striking",

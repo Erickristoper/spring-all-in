@@ -1,15 +1,20 @@
 package com.delsocorro.fight.model;
 
+import java.math.BigDecimal;
+
 public class Technique {
-    private String id;
+
+    
+    private long id;
     private String name;
     private String description;
     private String category;
     private String tags;
+    private BigDecimal hitPoint;
     private String videoUrl;
     private String imageUrl;
 
-    public Technique(String id, String name, String description, String category, String tags, String videoUrl,
+    public Technique(long id, String name, String description, String category, String tags, String videoUrl,
             String imageUrl) {
         this.id = id;
         this.name = name;
@@ -19,10 +24,13 @@ public class Technique {
         this.videoUrl = videoUrl;
         this.imageUrl = imageUrl;
     }
-    public String getId() {
+    public Technique() {
+        //TODO Auto-generated constructor stub
+    }
+    public long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
     public String getName() {
@@ -48,6 +56,13 @@ public class Technique {
     }
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public BigDecimal getHitPoint() {
+        return hitPoint;
+    }
+    public void setHitPoint(BigDecimal hitPoint) {
+        this.hitPoint = hitPoint;
     }
     public String getVideoUrl() {
         return videoUrl;
